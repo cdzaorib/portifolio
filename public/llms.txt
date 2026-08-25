@@ -8,6 +8,11 @@ Análise de Sistemas com conclusão em dezembro de 2026. Trabalha com React,
 Node.js, Firebase e integração com APIs externas. Disponível para vagas de
 desenvolvedor júnior e estágios no Rio de Janeiro e remoto.
 
+Um terceiro projeto, **Sexta Feira**, é um assistente pessoal de IA para
+desktop ainda em construção — Tauri, React 19, TypeScript, Deepgram, Claude
+Haiku, Edge-TTS e WebSocket. Não tem demonstração pública nem repositório
+divulgado, por isso não aparece na lista de links abaixo.
+
 ## Projetos
 
 - [SalvaMoney](https://wa.me/5521974424034): Assistente financeiro via WhatsApp que registra e consulta despesas por texto, áudio e imagem. Node.js, Express, Firebase Realtime DB com Admin SDK, Evolution API, Groq SDK e Railway. O link abre a conversa que serve de demonstração.
@@ -20,7 +25,3 @@ desenvolvedor júnior e estágios no Rio de Janeiro e remoto.
 - [LinkedIn](https://www.linkedin.com/in/carlos-ribeiro2): Perfil profissional.
 - [Email](mailto:cdzao@yahoo.com): cdzao@yahoo.com
 - [WhatsApp](https://wa.me/5521974424034): (21) 97442-4034
-
-## Optional
-
-- [Sexta Feira](https://github.com/cdzaorib): Assistente pessoal de IA para desktop, em construção. Tauri, React 19, TypeScript, Deepgram, Claude Haiku, Edge-TTS e WebSocket. Ainda sem demonstração pública.
