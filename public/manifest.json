@@ -1,0 +1,10 @@
+{
+  "name": "Carlos Daniel Cabral Ribeiro — Portfólio",
+  "short_name": "Carlos Ribeiro",
+  "description": "Desenvolvedor Full Stack Júnior — React, Node.js, Firebase",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F7F8FA",
+  "theme_color": "#F7F8FA",
+  "icons": [{ "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any" }]
+}

@@ -104,8 +104,10 @@ export const featuredProject: Project = {
     body: 'Evoluí de Firebase Client SDK para Admin SDK para melhor segurança e controle de acesso.',
     tone: 'resolved',
   },
-  liveUrl: pending('[[PLACEHOLDER: link ao vivo do SalvaMoney]]'),
-  repoUrl: pending('[[PLACEHOLDER: repo GitHub do SalvaMoney]]'),
+  // O dashboard roda no Railway atrás de DASHBOARD_TOKEN, então não há página
+  // pública para linkar — a conversa no WhatsApp é a demonstração ao vivo.
+  liveUrl: pending('[[PLACEHOLDER: só quando houver uma página pública sem token]]'),
+  repoUrl: 'https://github.com/cdzaorib/salvamoney-bot',
   whatsappUrl: 'https://wa.me/5521974424034',
 }
 
