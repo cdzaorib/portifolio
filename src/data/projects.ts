@@ -121,9 +121,10 @@ export const projects: readonly Project[] = [
       body: 'Substituir uma planilha manual usada no dia a dia da empresa por um sistema web real, com banco de dados.',
       tone: 'resolved',
     },
-    liveUrl:
-      'https://relatorio-de-passagens-git-claude-ree-da18bf-cdzaoribs-projects.vercel.app/',
-    repoUrl: 'https://github.com/cdzaorib/relatorio-passagens',
+    // Alias de produção, não a URL de preview de branch: esta é estável e não
+    // expira quando a branch some.
+    liveUrl: 'https://relatorio-de-passagens.vercel.app/',
+    repoUrl: 'https://github.com/cdzaorib/relatorio-de-passagens',
   },
   {
     id: 'sexta-feira',
