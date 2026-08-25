@@ -1,0 +1,26 @@
+# Carlos Daniel Cabral Ribeiro
+
+> Portfólio de Carlos Daniel Cabral Ribeiro, desenvolvedor full stack júnior
+> baseado no Rio de Janeiro. Página única, em português.
+
+Desenvolvedor autodidata, técnico consultor na Conclínica e estudante de
+Análise de Sistemas com conclusão em dezembro de 2026. Trabalha com React,
+Node.js, Firebase e integração com APIs externas. Disponível para vagas de
+desenvolvedor júnior e estágios no Rio de Janeiro e remoto.
+
+## Projetos
+
+- [SalvaMoney](https://wa.me/5521974424034): Assistente financeiro via WhatsApp que registra e consulta despesas por texto, áudio e imagem. Node.js, Express, Firebase Realtime DB com Admin SDK, Evolution API, Groq SDK e Railway. O link abre a conversa que serve de demonstração.
+- [Relatório de Passagens](https://relatorio-de-passagens-git-claude-ree-da18bf-cdzaoribs-projects.vercel.app/): App que substituiu um processo manual em Excel de reembolso de passagens na Conclínica por um fluxo web. Next.js 15, TypeScript, Supabase e Vercel.
+- [Código do Relatório de Passagens](https://github.com/cdzaorib/relatorio-passagens): Repositório do projeto no GitHub.
+
+## Contato
+
+- [GitHub](https://github.com/cdzaorib): Repositórios públicos.
+- [LinkedIn](https://www.linkedin.com/in/carlos-ribeiro2): Perfil profissional.
+- [Email](mailto:cdzao@yahoo.com): cdzao@yahoo.com
+- [WhatsApp](https://wa.me/5521974424034): (21) 97442-4034
+
+## Optional
+
+- [Sexta Feira](https://github.com/cdzaorib): Assistente pessoal de IA para desktop, em construção. Tauri, React 19, TypeScript, Deepgram, Claude Haiku, Edge-TTS e WebSocket. Ainda sem demonstração pública.

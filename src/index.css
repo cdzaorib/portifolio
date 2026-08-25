@@ -1,0 +1,180 @@
+@import 'tailwindcss';
+
+/*
+  Self-hosted: no third-party font origin, no render-blocking external request.
+  Latin subsets only — Portuguese needs no more, and shipping the Cyrillic,
+  Greek and Vietnamese cuts would just be dead weight in the bundle.
+*/
+@import '@fontsource/ibm-plex-sans/latin-400.css';
+@import '@fontsource/ibm-plex-sans/latin-ext-400.css';
+@import '@fontsource/ibm-plex-sans/latin-500.css';
+@import '@fontsource/ibm-plex-sans/latin-ext-500.css';
+@import '@fontsource/ibm-plex-mono/latin-400.css';
+@import '@fontsource/ibm-plex-mono/latin-ext-400.css';
+@import '@fontsource/ibm-plex-mono/latin-500.css';
+@import '@fontsource/ibm-plex-mono/latin-ext-500.css';
+
+/* Archivo ships one variable stylesheet covering every subset, so the two
+   faces actually needed are declared directly. */
+@font-face {
+  font-family: 'Archivo Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('@fontsource-variable/archivo/files/archivo-latin-wght-normal.woff2')
+    format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Archivo Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('@fontsource-variable/archivo/files/archivo-latin-ext-wght-normal.woff2')
+    format('woff2-variations');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/*
+  Palette — cool technical-document paper, one accent.
+  The accent is the WhatsApp read-receipt blue, darkened until it clears 4.5:1.
+  It marks one thing only: the output side — values the system produced,
+  links, and confirmations. It never decorates.
+
+  Measured against --color-paper (#F7F8FA):
+    ink        #0F1115  →  17.55:1
+    ink-muted  #5A6270  →   5.85:1
+    signal     #0A6E9E  →   5.29:1
+*/
+@theme {
+  --color-paper: #f7f8fa;
+  --color-paper-sunk: #edeff3;
+  --color-ink: #0f1115;
+  --color-ink-muted: #5a6270;
+  --color-rule: #d8dce3;
+  --color-signal: #0a6e9e;
+  --color-signal-wash: #e6f1f7;
+
+  --font-display: 'Archivo Variable', 'Archivo', system-ui, sans-serif;
+  --font-sans: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    /* Light-only by choice: tells the UA to render scrollbars and form
+       controls to match, instead of guessing from the system theme. */
+    color-scheme: light;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Sticky header clearance. Applied to the anchor targets themselves rather
+     than :target, so the offset is already in place when the scroll starts,
+     and to focusable elements so tabbing never parks one under the header. */
+  section[id],
+  [id='conteudo'] {
+    scroll-margin-top: 5.5rem;
+  }
+
+  a,
+  button,
+  [tabindex] {
+    scroll-margin-top: 5.5rem;
+    /* Removes the 300ms double-tap delay without disabling pinch zoom. */
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  ::selection {
+    background-color: var(--color-signal);
+    color: var(--color-paper);
+  }
+
+  /* One visible focus treatment for every interactive element. */
+  :focus-visible {
+    outline: 2px solid var(--color-signal);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+@layer components {
+  /* Notch and rounded-corner gutters, on top of the existing padding. */
+  .edge-safe {
+    padding-left: max(0px, env(safe-area-inset-left));
+    padding-right: max(0px, env(safe-area-inset-right));
+  }
+
+  /* Scroll reveal. Starts hidden only when JS is driving it, so a failed
+     observer can never leave the page blank. */
+  .reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    transition:
+      opacity 500ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .reveal[data-visible='true'] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  /* Nothing moves, nothing fades — and nothing stays hidden. */
+  .reveal,
+  .reveal[data-visible='true'] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer components {
+  /* Input swap on the SalvaMoney card. Neutralised by the reduced-motion
+     block above, which clamps every animation duration. */
+  @keyframes swap-in {
+    from {
+      opacity: 0;
+      transform: translateY(3px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .swap-in {
+    animation: swap-in 180ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
