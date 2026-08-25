@@ -178,3 +178,14 @@
     animation: swap-in 180ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 }
+
+@layer utilities {
+  /* A focus ring is an affordance, not an effect: it has to land the instant
+     the key is pressed. Links here carry transition-colors, which in Tailwind
+     v4 covers outline-color, so without this the ring fades in over 150ms.
+     The rule lives in `utilities` because that is the layer duration-150 is
+     in — declared from `base` it would simply lose the cascade. */
+  :focus-visible {
+    transition-duration: 0s;
+  }
+}
