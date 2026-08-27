@@ -116,7 +116,7 @@ export const projects: readonly Project[] = [
     id: 'relatorio-passagens',
     name: 'Relatório de Passagens',
     description:
-      'App que substituiu um processo manual em Excel de reembolso de passagens na Conclínica por um fluxo web.',
+      'App que substituiu o preenchimento manual em Excel do reembolso de passagens dos consultores da Tecnoarte — trecho a trecho, o que levava minutos, às vezes horas — por um fluxo web com banco de dados.',
     stack: ['Next.js 15', 'TypeScript', 'Supabase', 'Vercel'],
     decision: {
       label: 'Decisão técnica',

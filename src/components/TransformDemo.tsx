@@ -130,8 +130,8 @@ export function TransformDemo() {
           </div>
         </div>
 
-        {/* Transform */}
-        <div aria-hidden="true" className="flex justify-center lg:px-1">
+        {/* Transform — an LLM does the normalising; name the AI step so it reads at a glance. */}
+        <div aria-hidden="true" className="flex flex-col items-center justify-center gap-2 lg:px-1">
           <span className="flex h-9 w-9 items-center justify-center rounded-full border border-rule bg-paper text-ink-muted">
             <svg viewBox="0 0 16 16" className="h-4 w-4 rotate-90 lg:rotate-0" fill="none" aria-hidden="true" focusable="false">
               <path
@@ -141,6 +141,9 @@ export function TransformDemo() {
                 strokeLinecap="square"
               />
             </svg>
+          </span>
+          <span className="font-mono text-[0.625rem] uppercase tracking-[0.16em] text-ink-muted">
+            IA · LLM
           </span>
         </div>
 
@@ -171,7 +174,8 @@ export function TransformDemo() {
       </div>
 
       <p className="mt-5 border-t border-rule pt-4 text-[0.9375rem] leading-snug text-ink-muted">
-        Exemplo do fluxo: as três entradas produzem o mesmo registro.
+        Um LLM (Groq) normaliza as três entradas — texto, áudio e imagem — no
+        mesmo registro estruturado.
       </p>
     </div>
   )

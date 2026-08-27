@@ -2,9 +2,9 @@ export const profile = {
   name: 'Carlos Daniel Cabral Ribeiro',
   /** Split for the display setting — two lines, tight leading. */
   nameLines: ['Carlos Daniel', 'Cabral Ribeiro'] as const,
-  role: 'Desenvolvedor Full Stack Júnior',
+  role: 'Desenvolvedor Backend Júnior',
   tagline:
-    'Construo aplicações web funcionais, bem estruturadas e com boas decisões técnicas.',
+    'Construo o backend de aplicações reais: APIs, banco de dados e integração com IA — com decisões técnicas que se sustentam.',
 }
 
 /**
@@ -13,23 +13,29 @@ export const profile = {
  */
 export const statusFacts: readonly { label: string; value: string; confirmed?: boolean }[] = [
   { label: 'Base', value: 'Rio de Janeiro' },
-  { label: 'Hoje', value: 'Conclínica · Técnico consultor' },
+  { label: 'Hoje', value: 'Tecnoarte · Consultor Técnico' },
   { label: 'Formação', value: 'Análise de Sistemas · dez/2026' },
   { label: 'Disponível', value: 'Júnior / Estágio', confirmed: true },
 ]
 
 export const about: readonly string[] = [
-  'Sou desenvolvedor autodidata focado em construir aplicações web funcionais e bem estruturadas. Trabalho com React, Node.js, Firebase e integração com APIs externas. Estou sempre explorando novas tecnologias e resolvendo problemas reais através de projetos próprios.',
+  'Sou desenvolvedor autodidata com foco em backend — APIs, modelagem de dados e integração com IA. Trabalho com Node.js, Python e SQL, e construo do banco à interface quando o projeto pede. Resolvo problemas reais através de projetos próprios.',
   'Atualmente, estou completando Harvard CS50, estudando AWS Cloud Practitioner e praticando algoritmos com LeetCode.',
-  'Disponível para oportunidades de desenvolvedor júnior e estágios em Rio de Janeiro e remoto.',
+  'Disponível para oportunidades de desenvolvedor backend júnior e estágio, no Rio de Janeiro e remoto.',
 ]
 
-export const stackGroups: readonly { group: string; items: readonly string[] }[] = [
-  { group: 'Frontend', items: ['React', 'TypeScript', 'JavaScript', 'HTML', 'CSS'] },
-  { group: 'Backend', items: ['Node.js', 'Express', 'Python'] },
-  { group: 'Database', items: ['Firebase Realtime DB', 'SQLite'] },
-  { group: 'Infra', items: ['Railway', 'Git', 'GitHub', 'Vercel'] },
-  { group: 'APIs/IA', items: ['Groq', 'Evolution API', 'REST APIs'] },
+export const stackGroups: readonly {
+  group: string
+  items: readonly string[]
+  /** The languages row leads and is drawn with more weight — the thing to read first. */
+  featured?: boolean
+}[] = [
+  { group: 'Linguagens', items: ['JavaScript', 'TypeScript', 'Python', 'SQL', 'C'], featured: true },
+  { group: 'Backend', items: ['Node.js', 'Express'] },
+  { group: 'Frontend', items: ['React', 'Next.js', 'HTML', 'CSS'] },
+  { group: 'Dados', items: ['PostgreSQL', 'Firebase', 'SQLite'] },
+  { group: 'IA / APIs', items: ['Groq (LLM)', 'Claude', 'Evolution API', 'REST'] },
+  { group: 'Infra', items: ['Railway', 'Vercel', 'Git', 'GitHub'] },
 ]
 
 export const studying: readonly string[] = [

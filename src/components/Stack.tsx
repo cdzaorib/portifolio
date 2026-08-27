@@ -12,7 +12,11 @@ export function Stack() {
               key={group.group}
               className="grid gap-3 py-5 sm:grid-cols-[9rem_minmax(0,1fr)] sm:gap-6"
             >
-              <dt className="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.16em] text-ink-muted sm:pt-1.5">
+              <dt
+                className={`font-mono text-[0.6875rem] font-medium uppercase tracking-[0.16em] sm:pt-1.5 ${
+                  group.featured ? 'text-ink' : 'text-ink-muted'
+                }`}
+              >
                 {group.group}
               </dt>
               <dd>
@@ -21,7 +25,11 @@ export function Stack() {
                     <li
                       key={item}
                       translate="no"
-                      className="rounded-[6px] border border-rule bg-paper px-2.5 py-1 font-mono text-[0.8125rem] text-ink"
+                      className={
+                        group.featured
+                          ? 'rounded-[6px] border border-ink bg-ink px-2.5 py-1 font-mono text-[0.8125rem] font-medium text-paper'
+                          : 'rounded-[6px] border border-rule bg-paper px-2.5 py-1 font-mono text-[0.8125rem] text-ink'
+                      }
                     >
                       {item}
                     </li>
