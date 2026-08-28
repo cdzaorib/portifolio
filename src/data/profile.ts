@@ -35,6 +35,10 @@ export const stackGroups: readonly {
   { group: 'Frontend', items: ['React', 'Next.js', 'HTML', 'CSS'] },
   { group: 'Dados', items: ['PostgreSQL', 'Firebase', 'SQLite'] },
   { group: 'IA / APIs', items: ['Groq (LLM)', 'Claude', 'Evolution API', 'REST'] },
+  {
+    group: 'IA no fluxo',
+    items: ['Claude Code', 'Codex', 'Kimi K3', 'GLM 5.3', 'DeepSeek V4 Pro'],
+  },
   { group: 'Infra', items: ['Railway', 'Vercel', 'Git', 'GitHub'] },
 ]
 
@@ -57,16 +61,9 @@ export const contactChannels: readonly ContactChannel[] = [
   {
     id: 'email',
     label: 'Email',
-    display: 'cdzao@yahoo.com',
-    href: 'mailto:cdzao@yahoo.com',
+    display: 'carlosdcribeiroti@gmail.com',
+    href: 'mailto:carlosdcribeiroti@gmail.com',
     icon: 'mail',
-  },
-  {
-    id: 'whatsapp',
-    label: 'WhatsApp',
-    display: '(21) 97442-4034',
-    href: 'https://wa.me/5521974424034',
-    icon: 'whatsapp',
   },
   {
     id: 'linkedin',
