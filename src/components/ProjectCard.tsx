@@ -2,6 +2,7 @@ import { isUrl } from '../data/links'
 import type { Project } from '../data/projects'
 import { ActionLink } from './ActionLink'
 import { DecisionBlock } from './DecisionBlock'
+import { Screenshot } from './Screenshot'
 import { StackList } from './StackList'
 
 export function ProjectCard({ project }: { project: Project }) {
@@ -12,6 +13,12 @@ export function ProjectCard({ project }: { project: Project }) {
       aria-labelledby={`${project.id}-title`}
       className="flex h-full flex-col rounded-2xl border border-rule bg-paper p-6 transition-colors duration-150 hover:border-ink/30"
     >
+      {project.image ? (
+        <div className="mb-6">
+          <Screenshot image={project.image} />
+        </div>
+      ) : null}
+
       <h3
         id={`${project.id}-title`}
         className="text-balance font-display text-[1.375rem] font-semibold leading-tight tracking-[-0.02em]"

@@ -4,6 +4,7 @@ import { ActionLink } from './ActionLink'
 import { DecisionBlock } from './DecisionBlock'
 import { Eyebrow } from './Eyebrow'
 import { Reveal } from './Reveal'
+import { Screenshot } from './Screenshot'
 import { StackList } from './StackList'
 import { TransformDemo } from './TransformDemo'
 
@@ -23,6 +24,12 @@ export function FeaturedProject() {
         </h3>
 
         <p className="mt-4 max-w-[58ch] text-pretty text-ink-muted">{project.description}</p>
+
+        {project.image ? (
+          <div className="mt-8">
+            <Screenshot image={project.image} />
+          </div>
+        ) : null}
 
         <div className="mt-8">
           <TransformDemo />

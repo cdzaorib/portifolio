@@ -1,4 +1,21 @@
 import { pending, type MaybeUrl } from './links'
+import salvamoneyDashboard from '../assets/images/salvamoney-dashboard.webp'
+import relatorioLanding from '../assets/images/relatorio-landing.webp'
+
+/**
+ * A real screenshot of the project, shown in a window frame. Intrinsic pixel
+ * dimensions are carried so the frame reserves the aspect ratio (no layout
+ * shift). Omitted on projects with nothing public to show yet.
+ */
+export type ProjectImage = {
+  src: string
+  alt: string
+  width: number
+  height: number
+  /** Shown in the window chrome — a live URL, or a short label. */
+  label?: string
+  caption?: string
+}
 
 /**
  * The one engineering judgment call behind a project.
@@ -25,6 +42,7 @@ export type Project = {
   stack: string[]
   decision: Decision
   features?: string[]
+  image?: ProjectImage
   liveUrl?: MaybeUrl
   repoUrl?: MaybeUrl
   /** Only SalvaMoney has one: the chat thread *is* its live demo. */
@@ -99,6 +117,14 @@ export const featuredProject: Project = {
     'busca por tags',
     'dashboard com heatmap de gastos',
   ],
+  image: {
+    src: salvamoneyDashboard,
+    alt: 'Painel do SalvaMoney: cartões de orçamento, gastos e saldo, formulário de novo gasto e lista de despesas do mês.',
+    width: 1170,
+    height: 612,
+    label: 'salvamoney · painel',
+    caption: 'Painel real do app. Os valores e descrições pessoais foram ocultados.',
+  },
   decision: {
     label: 'Decisão técnica',
     body: 'Evoluí de Firebase Client SDK para Admin SDK para melhor segurança e controle de acesso.',
@@ -120,6 +146,13 @@ export const projects: readonly Project[] = [
     description:
       'App que substituiu o preenchimento manual em Excel do reembolso de passagens dos consultores da Tecnoarte — trecho a trecho, o que levava minutos, às vezes horas — por um fluxo web com banco de dados.',
     stack: ['Next.js 15', 'TypeScript', 'Supabase', 'Vercel'],
+    image: {
+      src: relatorioLanding,
+      alt: 'Página inicial do Relatório de Passagens: título "Quatro trechos, dois cliques" e um trajeto de ida e volta com valores.',
+      width: 1170,
+      height: 900,
+      label: 'relatorio-de-passagens.vercel.app',
+    },
     decision: {
       label: 'Decisão técnica',
       body: 'Substituir uma planilha manual usada no dia a dia da empresa por um sistema web real, com banco de dados.',
