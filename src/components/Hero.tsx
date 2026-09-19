@@ -10,13 +10,17 @@ import { StatusStrip } from './StatusStrip'
  * the right, sitting on the same baseline as the last line of the name.
  * When no photo file is present the right rail simply starts lower — there is
  * never an empty frame waiting for an image.
+ *
+ * On load the identity block is painted straight away and everything else
+ * rises in after it, so the page reads as a datasheet filling in rather than
+ * a stack of independent fades.
  */
 export function Hero() {
   return (
     <section id="topo" aria-labelledby="hero-title">
       <div className="mx-auto w-full max-w-[1120px] px-6 pb-16 pt-20 sm:px-8 sm:pb-24 sm:pt-28 lg:pb-28 lg:pt-32">
         <div className="grid gap-y-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-end lg:gap-x-16">
-          <div>
+          <div className="enter">
             <Eyebrow>{profile.role}</Eyebrow>
 
             <h1
@@ -37,7 +41,7 @@ export function Hero() {
 
           <div className="lg:pb-2">
             {profilePhotoUrl ? (
-              <figure className="mb-7">
+              <figure className="enter mb-7" style={{ animationDelay: '120ms' }}>
                 <img
                   src={profilePhotoUrl}
                   alt={`Retrato de ${profile.name}`}
@@ -51,11 +55,17 @@ export function Hero() {
               </figure>
             ) : null}
 
-            <p className="max-w-[40ch] text-[1.0625rem] leading-[1.6] text-ink-muted sm:text-[1.1875rem]">
+            <p
+              className="enter max-w-[40ch] text-[1.0625rem] leading-[1.6] text-ink-muted sm:text-[1.1875rem]"
+              style={{ animationDelay: '190ms' }}
+            >
               {profile.tagline}
             </p>
 
-            <div className="mt-8 flex flex-wrap items-center gap-3">
+            <div
+              className="enter mt-8 flex flex-wrap items-center gap-3"
+              style={{ animationDelay: '260ms' }}
+            >
               <ActionLink href="#projetos" variant="primary">
                 Ver projetos
                 <ArrowDown className="h-3.5 w-3.5 shrink-0" />
@@ -68,7 +78,9 @@ export function Hero() {
         </div>
       </div>
 
-      <StatusStrip />
+      <div className="enter" style={{ animationDelay: '340ms' }}>
+        <StatusStrip />
+      </div>
     </section>
   )
 }

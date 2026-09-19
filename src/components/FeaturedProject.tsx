@@ -3,6 +3,7 @@ import { isUrl } from '../data/links'
 import { ActionLink } from './ActionLink'
 import { DecisionBlock } from './DecisionBlock'
 import { Eyebrow } from './Eyebrow'
+import { Metrics } from './Metrics'
 import { Reveal } from './Reveal'
 import { Screenshot } from './Screenshot'
 import { StackList } from './StackList'
@@ -24,6 +25,12 @@ export function FeaturedProject() {
         </h3>
 
         <p className="mt-4 max-w-[58ch] text-pretty text-ink-muted">{project.description}</p>
+
+        {project.metrics ? (
+          <div className="mt-7">
+            <Metrics metrics={project.metrics} />
+          </div>
+        ) : null}
 
         {project.image ? (
           <div className="mt-8">

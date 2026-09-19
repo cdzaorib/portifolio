@@ -35,6 +35,16 @@ export type Decision = {
   tone: 'resolved' | 'ongoing'
 }
 
+/**
+ * A number the project actually earned. Two shapes, because the facts come in
+ * two shapes: a count that climbs to its value, and a before/after shift —
+ * which is the page's own thesis (messy input, structured output) stated in
+ * minutes.
+ */
+export type Metric =
+  | { kind: 'count'; value: number; prefix?: string; suffix?: string; label: string }
+  | { kind: 'shift'; from: string; to: string; label: string }
+
 export type Project = {
   id: string
   name: string
@@ -42,7 +52,10 @@ export type Project = {
   stack: string[]
   decision: Decision
   features?: string[]
+  metrics?: readonly Metric[]
   image?: ProjectImage
+  /** Takes the full grid row — for work whose substance needs the room. */
+  wide?: boolean
   liveUrl?: MaybeUrl
   repoUrl?: MaybeUrl
   /** Only SalvaMoney has one: the chat thread *is* its live demo. */
@@ -101,7 +114,7 @@ export const featuredProject: Project = {
   id: 'salvamoney',
   name: 'SalvaMoney',
   description:
-    'Assistente financeiro via WhatsApp — registro e consulta de despesas por texto, áudio e imagem.',
+    'Assistente financeiro via WhatsApp: um LLM lê a mensagem — texto, áudio ou foto do comprovante — e devolve um lançamento estruturado, categorizado e gravado.',
   stack: [
     'Node.js',
     'Express',
@@ -116,6 +129,9 @@ export const featuredProject: Project = {
     'despesas fixas',
     'busca por tags',
     'dashboard com heatmap de gastos',
+  ],
+  metrics: [
+    { kind: 'count', value: 1000, suffix: '+', label: 'transações registradas' },
   ],
   image: {
     src: salvamoneyDashboard,
@@ -144,8 +160,16 @@ export const projects: readonly Project[] = [
     id: 'relatorio-passagens',
     name: 'Relatório de Passagens',
     description:
-      'App que substituiu o preenchimento manual em Excel do reembolso de passagens dos consultores da Tecnoarte — trecho a trecho, o que levava minutos, às vezes horas — por um fluxo web com banco de dados.',
-    stack: ['Next.js 15', 'TypeScript', 'Supabase', 'Vercel'],
+      'App multiusuário que substituiu o reembolso de passagens feito em planilha na Tecnoarte. Autenticação, trechos salvos e PDF pronto no fim — usado hoje pela equipe de consultores.',
+    stack: ['Next.js 15', 'TypeScript', 'Supabase/PostgreSQL', 'Vercel'],
+    metrics: [
+      {
+        kind: 'shift',
+        from: '20–40 min',
+        to: '~3 min',
+        label: 'para gerar o relatório do período',
+      },
+    ],
     image: {
       src: relatorioLanding,
       alt: 'Página inicial do Relatório de Passagens: título "Quatro trechos, dois cliques" e um trajeto de ida e volta com valores.',
@@ -164,26 +188,55 @@ export const projects: readonly Project[] = [
     repoUrl: 'https://github.com/cdzaorib/relatorio-de-passagens',
   },
   {
+    id: 'crononote',
+    name: 'CronoNote',
+    description:
+      'Calendário de estudos em Flask: sessões anônimas por UUID, CRUD de registros e API JSON — sem cadastro para começar a usar.',
+    stack: ['Python', 'Flask', 'SQLite', 'SQL', 'JavaScript'],
+    decision: {
+      label: 'Decisão técnica',
+      body: 'Sessão anônima por UUID em vez de login: o app serve no primeiro acesso, sem barreira de cadastro. A validação roda no servidor e as queries são parametrizadas — o cliente não é fonte de verdade.',
+      tone: 'resolved',
+    },
+    repoUrl: 'https://github.com/cdzaorib/Crononote',
+  },
+  {
     id: 'sexta-feira',
     name: 'Sexta Feira',
+    // The AI work is the heaviest thing here — it gets the whole row, and
+    // closes the section rather than opening a hole beside a half-width card.
+    wide: true,
     description:
-      'Assistente pessoal de IA para desktop, inspirado no Jarvis do Iron Man.',
+      'Assistente de IA para desktop que roda local. Roteia entre vários modelos com fallback automático, busca no próprio acervo com RAG, guarda memória entre sessões e executa ações no terminal e no navegador — sempre pedindo confirmação antes de agir.',
     stack: [
-      'Tauri',
-      'React 19',
+      'Tauri/Rust',
+      'React',
       'TypeScript',
-      'Deepgram (STT)',
-      'Claude Haiku',
+      'Ollama/Hermes',
+      'SQLite + sqlite-vec',
+      'fastembed',
+      'Deepgram',
       'Edge-TTS',
-      'WebSocket',
+      'GLM',
+    ],
+    features: [
+      'roteamento multi-provider com fallback',
+      'RAG local com busca vetorial',
+      'memória persistente do agente',
+      'tool/function calling',
+      'entrada por voz e visão de tela',
+      'Human-in-the-Loop nas ações',
+    ],
+    metrics: [
+      { kind: 'count', value: 174, suffix: '+', label: 'testes automatizados' },
     ],
     decision: {
-      label: 'Em construção',
-      body: 'Projeto pessoal em desenvolvimento. Até aqui construí a arquitetura de voz e IA rodando localmente: captura de áudio, transcrição, resposta do modelo e síntese de fala conectadas por WebSocket.',
+      label: 'Decisão técnica',
+      body: 'Nenhum modelo é o melhor em tudo, e nenhum está sempre no ar. Por isso a arquitetura é multi-provider: o app conversa com uma interface única e o roteador escolhe o modelo, caindo para o próximo quando um falha. Trocar de provedor não encosta no resto do código.',
       tone: 'ongoing',
     },
-    // No liveUrl and no repoUrl: this project has neither yet, so the card
-    // renders no action buttons rather than dead ones.
+    // Repositório privado e sem demo pública: o card não renderiza botão algum
+    // em vez de um link morto.
   },
 ]
 

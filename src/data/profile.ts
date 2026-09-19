@@ -14,14 +14,47 @@ export const profile = {
 export const statusFacts: readonly { label: string; value: string; confirmed?: boolean }[] = [
   { label: 'Base', value: 'Rio de Janeiro' },
   { label: 'Hoje', value: 'Tecnoarte · Consultor Técnico' },
-  { label: 'Formação', value: 'Análise de Sistemas · dez/2026' },
-  { label: 'Disponível', value: 'Júnior / Estágio', confirmed: true },
+  { label: 'Formação', value: 'ADS · Estácio · dez/2026' },
+  { label: 'Disponível', value: 'Backend Júnior / Estágio', confirmed: true },
 ]
 
 export const about: readonly string[] = [
-  'Sou desenvolvedor autodidata com foco em backend — APIs, modelagem de dados e integração com IA. Trabalho com Node.js, Python e SQL, e construo do banco à interface quando o projeto pede. Resolvo problemas reais através de projetos próprios.',
-  'Atualmente, estou completando Harvard CS50, estudando AWS Cloud Practitioner e praticando algoritmos com LeetCode.',
-  'Disponível para oportunidades de desenvolvedor backend júnior e estágio, no Rio de Janeiro e remoto.',
+  'Sou desenvolvedor backend júnior: trabalho com APIs REST, Node.js, Python e bancos relacionais. Na Tecnoarte dou suporte técnico aos sistemas Conclínica e Visual Asa — investigo ocorrências e escrevo consultas SQL para diagnosticar e validar dados.',
+  'Fora do suporte, construo. Os projetos aqui integram LLMs a aplicações que rodam de verdade: um bot financeiro no WhatsApp que entende texto, áudio e imagem, e um assistente de desktop com RAG local, memória e roteamento entre modelos.',
+  'CS50x de Harvard concluído, cursando Análise e Desenvolvimento de Sistemas na Estácio. Disponível para vagas de backend júnior e estágio, no Rio de Janeiro e remoto.',
+]
+
+export type Role = {
+  id: string
+  company: string
+  title: string
+  period: string
+  /** Marks the role still running — gets the accent, like a live value. */
+  current?: boolean
+  bullets: readonly string[]
+}
+
+export const experience: readonly Role[] = [
+  {
+    id: 'tecnoarte',
+    company: 'Tecnoarte',
+    title: 'Consultor Técnico Júnior',
+    period: '06/2026 — atual',
+    current: true,
+    bullets: [
+      'Suporte técnico aos sistemas Conclínica e Visual Asa: investigo ocorrências, oriento usuários e rodo consultas SQL para diagnóstico e validação de dados.',
+      'Por iniciativa própria, construí o Relatório de Passagens — app multiusuário com autenticação e geração de PDF — que substituiu um processo manual em planilhas e hoje é usado pela equipe de consultores.',
+    ],
+  },
+  {
+    id: 'riogaleao',
+    company: 'RioGaleão · Aeroporto Tom Jobim',
+    title: 'Jovem Aprendiz — Operações',
+    period: '01/2024 — 04/2025',
+    bullets: [
+      'Apoio às operações de embarque e ao atendimento a passageiros, incluindo situações de contingência.',
+    ],
+  },
 ]
 
 export const stackGroups: readonly {
@@ -30,22 +63,26 @@ export const stackGroups: readonly {
   /** The languages row leads and is drawn with more weight — the thing to read first. */
   featured?: boolean
 }[] = [
-  { group: 'Linguagens', items: ['JavaScript', 'TypeScript', 'Python', 'SQL', 'C'], featured: true },
-  { group: 'Backend', items: ['Node.js', 'Express'] },
+  { group: 'Linguagens', items: ['JavaScript', 'Python', 'TypeScript', 'SQL', 'C'], featured: true },
+  { group: 'Backend', items: ['Node.js', 'Express', 'Flask', 'APIs REST'] },
+  { group: 'Dados', items: ['PostgreSQL', 'Supabase', 'SQLite', 'Firebase'] },
+  {
+    group: 'IA aplicada',
+    items: ['LLMs', 'RAG', 'embeddings', 'busca vetorial', 'tool calling', 'Groq', 'Claude API', 'Ollama'],
+  },
   { group: 'Frontend', items: ['React', 'Next.js', 'HTML', 'CSS'] },
-  { group: 'Dados', items: ['PostgreSQL', 'Firebase', 'SQLite'] },
-  { group: 'IA / APIs', items: ['Groq (LLM)', 'Claude', 'Evolution API', 'REST'] },
   {
     group: 'IA no fluxo',
     items: ['Claude Code', 'Codex', 'Kimi K3', 'GLM 5.3', 'DeepSeek V4 Pro'],
   },
-  { group: 'Infra', items: ['Railway', 'Vercel', 'Git', 'GitHub'] },
+  { group: 'Infra', items: ['Git', 'GitHub', 'Railway', 'Vercel'] },
 ]
 
-export const studying: readonly string[] = [
-  'Harvard CS50 (reta final)',
-  'AWS Cloud Practitioner',
-  'LeetCode diário (NeetCode)',
+/** Finished credentials, not aspirations — CS50x is done, not in progress. */
+export const credentials: readonly { label: string; detail: string; done?: boolean }[] = [
+  { label: 'CS50x — Harvard', detail: 'concluído · 2026', done: true },
+  { label: 'Inglês B2 — EF SET', detail: 'certificado', done: true },
+  { label: 'Análise e Desenvolvimento de Sistemas — Estácio', detail: 'conclusão dez/2026' },
 ]
 
 export type ContactChannel = {

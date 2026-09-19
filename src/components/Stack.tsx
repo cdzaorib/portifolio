@@ -1,4 +1,5 @@
-import { stackGroups, studying } from '../data/profile'
+import { credentials, stackGroups } from '../data/profile'
+import { CheckCheck } from './Icons'
 import { Reveal } from './Reveal'
 import { Section } from './Section'
 
@@ -41,23 +42,27 @@ export function Stack() {
         </dl>
       </Reveal>
 
-      <Reveal className="mt-8" delay={120}>
-        {/* A short row of labels, not prose — no reading measure to hold. */}
+      <Reveal className="mt-10" delay={120}>
         <div>
           <h3 className="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.16em] text-ink-muted">
-            Atualmente estudando
+            Formação e certificações
           </h3>
-          {/* Separator trails each item rather than leading the next, so a
-              wrapped line never opens with a stray dot. */}
-          <ul className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1.5 text-[0.9375rem] text-ink">
-            {studying.map((item, index) => (
-              <li key={item} className="flex items-center gap-2">
-                {item}
-                {index < studying.length - 1 ? (
-                  <span aria-hidden="true" className="text-ink-muted">
-                    ·
-                  </span>
+
+          {/* The double check marks what is finished — the same mark the
+              status strip uses for a confirmed fact. */}
+          <ul className="mt-4 space-y-3">
+            {credentials.map((credential) => (
+              <li
+                key={credential.label}
+                className="flex flex-wrap items-baseline gap-x-3 gap-y-1"
+              >
+                {credential.done ? (
+                  <CheckCheck className="h-3 w-4 shrink-0 translate-y-px text-signal" />
                 ) : null}
+                <span className="text-[0.9375rem] text-ink">{credential.label}</span>
+                <span translate="no" className="font-mono text-[0.75rem] text-ink-muted">
+                  {credential.detail}
+                </span>
               </li>
             ))}
           </ul>

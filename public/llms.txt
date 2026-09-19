@@ -3,22 +3,29 @@
 > Portfólio de Carlos Daniel Cabral Ribeiro, desenvolvedor backend júnior
 > baseado no Rio de Janeiro. Página única, em português.
 
-Desenvolvedor autodidata com foco em backend — APIs, modelagem de dados e
-integração com IA. Consultor técnico na Tecnoarte e estudante de Análise de
-Sistemas com conclusão em dezembro de 2026. Trabalha com Node.js, Python, SQL
-e integração com APIs e LLMs. Disponível para vagas de desenvolvedor backend
-júnior e estágios no Rio de Janeiro e remoto.
+Desenvolvedor backend júnior — APIs REST, Node.js, Python e bancos
+relacionais. Consultor Técnico Júnior na Tecnoarte desde junho de 2026, onde dá
+suporte aos sistemas Conclínica e Visual Asa e escreve consultas SQL para
+diagnóstico e validação de dados. Antes disso, foi Jovem Aprendiz em operações
+no RioGaleão (2024–2025). CS50x de Harvard concluído em 2026; cursa Análise e
+Desenvolvimento de Sistemas na Estácio, com conclusão prevista para dezembro de
+2026; inglês B2 certificado pelo EF SET. Disponível para vagas de desenvolvedor
+backend júnior e estágios no Rio de Janeiro e remoto.
 
-Um terceiro projeto, **Sexta Feira**, é um assistente pessoal de IA para
-desktop ainda em construção — Tauri, React 19, TypeScript, Deepgram, Claude
-Haiku, Edge-TTS e WebSocket. Não tem demonstração pública nem repositório
-divulgado, por isso não aparece na lista de links abaixo.
+**Sexta Feira**, seu assistente de IA para desktop, não aparece na lista de
+links abaixo: o repositório é privado e não há demonstração pública. É um
+app Tauri/Rust e React que roteia entre vários modelos com fallback
+automático, faz RAG local com busca vetorial (SQLite + sqlite-vec, fastembed),
+mantém memória persistente do agente, usa tool/function calling e executa
+ações com confirmação humana, com mais de 174 testes automatizados.
 
 ## Projetos
 
-- [SalvaMoney](https://cdzaorib.github.io/Salvamoney-site/): Assistente financeiro via WhatsApp que registra e consulta despesas por texto, áudio e imagem — um LLM (Groq) normaliza as três entradas no mesmo registro estruturado. Node.js, Express, Firebase Realtime DB com Admin SDK, Evolution API, Groq SDK e Railway. Página pública de apresentação; o bot roda em https://wa.me/5521998541441.
-- [Relatório de Passagens](https://relatorio-de-passagens.vercel.app/): App que substituiu o preenchimento manual em Excel do reembolso de passagens dos consultores da Tecnoarte por um fluxo web com banco de dados. Next.js 15, TypeScript, Supabase e Vercel.
+- [SalvaMoney](https://cdzaorib.github.io/Salvamoney-site/): Assistente financeiro via WhatsApp — um LLM (Groq) lê texto, áudio ou foto de comprovante e devolve um lançamento estruturado e categorizado. Mais de 1.000 transações registradas. Node.js, Express, Firebase Realtime DB com Admin SDK, Evolution API, Groq SDK e Railway. Página pública de apresentação; o bot roda em https://wa.me/5521998541441.
+- [Código do SalvaMoney](https://github.com/cdzaorib/salvamoney-bot): Repositório do bot no GitHub.
+- [Relatório de Passagens](https://relatorio-de-passagens.vercel.app/): App multiusuário que substituiu o reembolso de passagens feito em planilha na Tecnoarte, com autenticação e geração de PDF. Reduziu a geração do relatório de 20–40 minutos para cerca de 3 minutos e é usado pela equipe de consultores. Next.js 15, TypeScript, Supabase/PostgreSQL e Vercel.
 - [Código do Relatório de Passagens](https://github.com/cdzaorib/relatorio-de-passagens): Repositório do projeto no GitHub.
+- [CronoNote](https://github.com/cdzaorib/Crononote): Calendário de estudos em Flask com sessões anônimas por UUID, CRUD de registros e API JSON, validação no servidor e queries SQL parametrizadas sobre SQLite. Python, Flask, SQLite, SQL e JavaScript.
 
 ## Contato
 

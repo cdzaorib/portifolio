@@ -14,7 +14,7 @@ export function Cs50() {
       id="cs50"
       eyebrow="CS50"
       title="Fundamentos"
-      lede="Exercícios do Harvard CS50, escritos em C."
+      lede="Exercícios em C do CS50x de Harvard, concluído em 2026."
     >
       <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {cs50Exercises.map((exercise, index) => (
