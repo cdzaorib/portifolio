@@ -54,8 +54,11 @@ export type Project = {
   features?: string[]
   metrics?: readonly Metric[]
   image?: ProjectImage
-  /** Takes the full grid row — for work whose substance needs the room. */
-  wide?: boolean
+  /**
+   * Where the work actually stands — the thing a recruiter wants to separate:
+   * software other people depend on versus something built to learn.
+   */
+  status: 'em produção' | 'projeto pessoal' | 'em construção'
   liveUrl?: MaybeUrl
   repoUrl?: MaybeUrl
   /** Only SalvaMoney has one: the chat thread *is* its live demo. */
@@ -113,6 +116,7 @@ export const salvaMoneyRecord: readonly { key: string; value: string }[] = [
 export const featuredProject: Project = {
   id: 'salvamoney',
   name: 'SalvaMoney',
+  status: 'em produção',
   description:
     'Assistente financeiro via WhatsApp: um LLM lê a mensagem — texto, áudio ou foto do comprovante — e devolve um lançamento estruturado, categorizado e gravado.',
   stack: [
@@ -159,6 +163,7 @@ export const projects: readonly Project[] = [
   {
     id: 'relatorio-passagens',
     name: 'Relatório de Passagens',
+    status: 'em produção',
     description:
       'App multiusuário que substituiu o reembolso de passagens feito em planilha na Tecnoarte. Autenticação, trechos salvos e PDF pronto no fim — usado hoje pela equipe de consultores.',
     stack: ['Next.js 15', 'TypeScript', 'Supabase/PostgreSQL', 'Vercel'],
@@ -190,6 +195,7 @@ export const projects: readonly Project[] = [
   {
     id: 'crononote',
     name: 'CronoNote',
+    status: 'projeto pessoal',
     description:
       'Calendário de estudos em Flask: sessões anônimas por UUID, CRUD de registros e API JSON — sem cadastro para começar a usar.',
     stack: ['Python', 'Flask', 'SQLite', 'SQL', 'JavaScript'],
@@ -203,9 +209,7 @@ export const projects: readonly Project[] = [
   {
     id: 'sexta-feira',
     name: 'Sexta Feira',
-    // The AI work is the heaviest thing here — it gets the whole row, and
-    // closes the section rather than opening a hole beside a half-width card.
-    wide: true,
+    status: 'em construção',
     description:
       'Assistente de IA para desktop que roda local. Roteia entre vários modelos com fallback automático, busca no próprio acervo com RAG, guarda memória entre sessões e executa ações no terminal e no navegador — sempre pedindo confirmação antes de agir.',
     stack: [

@@ -4,7 +4,12 @@ import { Reveal } from './Reveal'
 
 type SectionProps = {
   id: string
-  eyebrow: string
+  /**
+   * Only where the label names a field. A mono eyebrow that merely restates
+   * the heading below it ("SOBRE" over "Sobre mim") decorates rather than
+   * informs, so most sections open on the heading itself.
+   */
+  eyebrow?: string
   title: string
   /** Optional one-line framing under the section title. */
   lede?: string
@@ -22,10 +27,12 @@ export function Section({ id, eyebrow, title, lede, children, className = '' }: 
       <div className="mx-auto w-full max-w-[1120px] px-6 sm:px-8">
         <Reveal>
           <header className="max-w-[62ch]">
-            <Eyebrow>{eyebrow}</Eyebrow>
+            {eyebrow ? <Eyebrow>{eyebrow}</Eyebrow> : null}
             <h2
               id={`${id}-title`}
-              className="mt-3 text-balance font-display text-[clamp(1.75rem,3vw,2.375rem)] font-semibold leading-[1.1] tracking-[-0.02em]"
+              className={`text-balance font-display text-[clamp(1.75rem,3vw,2.375rem)] font-semibold leading-[1.1] tracking-[-0.02em] ${
+                eyebrow ? 'mt-3' : ''
+              }`}
             >
               {title}
             </h2>

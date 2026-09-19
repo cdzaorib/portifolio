@@ -1,24 +1,37 @@
+import { eyebrowClass } from './Eyebrow'
+
 /**
- * Stack names are set in mono: they are strings a machine reads, not prose.
+ * A stack, written the way an engineer writes one: a mono line, separated by
+ * middots. It used to be a row of bordered pills — but a pill gives every
+ * name the same weight and adds a box per word, and the page already has
+ * enough boxes. The separator trails its item so a wrapped line never opens
+ * with a stray dot.
  */
 export function StackList({ items, label }: { items: readonly string[]; label: string }) {
   return (
     <div>
-      <dt className="font-mono text-[0.6875rem] font-medium uppercase tracking-[0.16em] text-ink-muted">
-        {label}
-      </dt>
-      <dd className="mt-2.5">
-        <ul className="flex flex-wrap gap-1.5">
-          {items.map((item) => (
-            <li
-              key={item}
-              translate="no"
-              className="rounded-[6px] border border-rule bg-paper px-2.5 py-1 font-mono text-[0.75rem] text-ink"
-            >
+      <dt className={eyebrowClass}>{label}</dt>
+      <dd
+        translate="no"
+        className="mt-2 font-mono text-[0.8125rem] leading-[1.75] text-ink"
+      >
+        {/* The name and its trailing separator stay welded together so a
+            wrapped line never opens with a stray dot; the space that follows
+            is the only break opportunity, and without it the whole line is
+            one unbreakable run that overflows the viewport. */}
+        {items.map((item, index) => (
+          <span key={item}>
+            <span className="whitespace-nowrap">
               {item}
-            </li>
-          ))}
-        </ul>
+              {index < items.length - 1 ? (
+                <span aria-hidden="true" className="pl-2 text-ink-muted">
+                  ·
+                </span>
+              ) : null}
+            </span>
+            {index < items.length - 1 ? ' ' : null}
+          </span>
+        ))}
       </dd>
     </div>
   )

@@ -6,17 +6,17 @@ import { Section } from './Section'
 
 export function Projects() {
   return (
-    <Section id="projetos" eyebrow="Projetos" title="O que eu construí">
+    <Section id="projetos" title="O que eu construí">
       <FeaturedProject />
 
-      {/* The wide card takes the whole row; it leads so the grid never opens
-          a hole beside it. */}
-      {/* items-start, not stretch: one card carries a screenshot and the other
-          does not, and a stretched short card reads as a hollow box. */}
-      <ul className="mt-14 grid items-start gap-5 lg:grid-cols-2">
+      {/* One column, separated by rules: entries in a document. A two-column
+          grid of bordered cards made four unlike projects look interchangeable
+          and left a hole wherever one had a screenshot and its neighbour did
+          not. */}
+      <ul className="mt-16 divide-y divide-rule border-t border-rule">
         {projects.map((project, index) => (
-          <li key={project.id} className={project.wide ? 'lg:col-span-2' : undefined}>
-            <Reveal delay={index * 80} className="h-full">
+          <li key={project.id} className="py-12 first:pt-12 last:pb-0 sm:py-14">
+            <Reveal delay={index * 60}>
               <ProjectCard project={project} />
             </Reveal>
           </li>

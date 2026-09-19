@@ -15,7 +15,13 @@ export function FeaturedProject() {
   return (
     <Reveal className="mt-12">
       <article aria-labelledby="salvamoney-title">
-        <Eyebrow>Projeto em destaque</Eyebrow>
+        <Eyebrow>
+          Projeto em destaque
+          <span aria-hidden="true" className="px-2">
+            ·
+          </span>
+          <span className="text-signal">{project.status}</span>
+        </Eyebrow>
 
         <h3
           id="salvamoney-title"

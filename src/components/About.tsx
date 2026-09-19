@@ -8,7 +8,7 @@ export function About() {
   const [lead, ...rest] = about
 
   return (
-    <Section id="sobre" eyebrow="Sobre" title="Sobre mim">
+    <Section id="sobre" title="Quem sou e onde trabalho">
       <div className="mt-8 grid gap-8 sm:gap-10 lg:grid-cols-[minmax(0,58ch)_auto] lg:items-start lg:gap-14">
         <Reveal delay={60}>
           <div>

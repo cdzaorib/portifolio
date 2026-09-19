@@ -5,7 +5,7 @@ import { Section } from './Section'
 
 export function Stack() {
   return (
-    <Section id="stack" eyebrow="Stack" title="Ferramentas que uso">
+    <Section id="stack" title="Com o que eu trabalho">
       <Reveal className="mt-8" delay={60}>
         <dl className="divide-y divide-rule border-y border-rule">
           {stackGroups.map((group) => (
@@ -20,22 +20,34 @@ export function Stack() {
               >
                 {group.group}
               </dt>
-              <dd>
-                <ul className="flex flex-wrap gap-1.5">
-                  {group.items.map((item) => (
-                    <li
-                      key={item}
-                      translate="no"
-                      className={
-                        group.featured
-                          ? 'rounded-[6px] border border-ink bg-ink px-2.5 py-1 font-mono text-[0.8125rem] font-medium text-paper'
-                          : 'rounded-[6px] border border-rule bg-paper px-2.5 py-1 font-mono text-[0.8125rem] text-ink'
-                      }
-                    >
+              {/* Type carries the hierarchy, not boxes: the languages row is
+                  set large and dark, everything else recedes. */}
+              <dd
+                translate="no"
+                className={
+                  group.featured
+                    ? 'font-mono text-[1.0625rem] font-medium leading-[1.6] tracking-[-0.01em] text-ink sm:text-[1.1875rem]'
+                    : 'font-mono text-[0.875rem] leading-[1.8] text-ink-muted'
+                }
+              >
+                {/* Name + separator welded, then a real space as the break
+                    opportunity — otherwise the row is one unbreakable run. */}
+                {group.items.map((item, index) => (
+                  <span key={item}>
+                    <span className="whitespace-nowrap">
                       {item}
-                    </li>
-                  ))}
-                </ul>
+                      {index < group.items.length - 1 ? (
+                        <span
+                          aria-hidden="true"
+                          className={`text-ink-muted ${group.featured ? 'pl-2.5' : 'pl-2'}`}
+                        >
+                          ·
+                        </span>
+                      ) : null}
+                    </span>
+                    {index < group.items.length - 1 ? ' ' : null}
+                  </span>
+                ))}
               </dd>
             </div>
           ))}
